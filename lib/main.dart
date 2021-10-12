@@ -9,8 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Dro Health',
       theme: ThemeData(
+        fontFamily: 'Proxima',
         primarySwatch: Colors.blue,
       ),
       home: StoreScreen(),

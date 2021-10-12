@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.3.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -36,12 +37,27 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Proxima
+      fonts:
+        - asset: fonts/ProximaNova-Regular.otf
+        - asset: fonts/Proxima Nova Thin.otf
+          weight: 100
+        - asset: fonts/Proxima Nova Semibold.otf
+          weight: 400
+        - asset: fonts/Proxima Nova Extrabold.otf
+          weight: 700
+        - asset: fonts/Proxima Nova Bold.otf
+          weight: 500
+        - asset: fonts/Proxima Nova Black.otf
+          weight: 300
+        - asset: fonts/Proxima Nova Alt Thin.otf
+          weight: 200
+        - asset: fonts/Proxima Nova Alt Light.otf
+          style: italic
+        - asset: fonts/Proxima Nova Alt Bold.otf
+          weight: 600
+          
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
