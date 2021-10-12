@@ -9,8 +9,8 @@ class DroColors {
   static const Color lightGrey = Color(0xFFF2F2F2);
 
   ///Gradients
-  static const LinearGradient purpleGradient =
-      LinearGradient(colors: [Color(0xFF7A08FA), Color(0xffAD3BFC)]);
+  static const LinearGradient purpleGradient = LinearGradient(
+      colors: [Color(0xFF7A08FA), Color(0xffAD3BFC)], stops: [.05, .5]);
 
   static const LinearGradient redGradient =
       LinearGradient(colors: [Color(0xFFFE806F), Color(0xffE5366A)]);

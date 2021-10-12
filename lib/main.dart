@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Proxima',
         primarySwatch: Colors.blue,
       ),
-      home: StoreScreen(),
+      home: Material(child: StoreScreen()),
     );
   }
 }
