@@ -1,6 +1,10 @@
+import 'package:drohealthtest/components/categoryCard.dart';
+import 'package:drohealthtest/components/drugCard.dart';
 import 'package:drohealthtest/components/input/searchTextField.dart';
 import 'package:drohealthtest/components/mediumIcon.dart';
+import 'package:drohealthtest/models/categoryCardModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
+import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -91,6 +95,49 @@ class StoreScreen extends StatelessWidget {
                         onPressed: () {},
                       ),
                     ],
+                  ),
+                  Flexible(
+                    child: SizedBox(
+                      height: size.height * .12,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (BuildContext context, int index) {
+                          return CategoryCard(
+                            cardModel: CategoryCardModel.fromJson(
+                                MockData.categories[index]),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: size.height * .02),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('SUGGESTIONS',
+                            style: TextStyle(fontWeight: FontWeight.bold))
+                      ]),
+                  SizedBox(height: size.height * .01),
+                  Expanded(
+                    flex: 3,
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero,
+                      physics: BouncingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        childAspectRatio:
+                            (size.width * .2) / (size.height * .15),
+                        crossAxisSpacing: 10,
+                      ),
+                      // clipBehavior: Clip.none,
+                      itemCount: 6,
+                      itemBuilder: (BuildContext context, int index) {
+                        return DrugCard();
+                      },
+                    ),
                   ),
                 ],
               ),
