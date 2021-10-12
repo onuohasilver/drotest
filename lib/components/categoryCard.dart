@@ -29,6 +29,7 @@ class CategoryCard extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
+                    onTap: () {},
                     child: Center(
                       child: Text(
                         cardModel.title,
