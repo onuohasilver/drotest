@@ -1,4 +1,4 @@
-import 'package:drohealthtest/screens/cartScreen.dart';
+import 'package:drohealthtest/screens/cart/cartPage.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +40,12 @@ Future showAddToCartModal(BuildContext context) {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartPage(),
+                    ),
+                  );
                 },
               ),
               SizedBox(height: size.height * .01),
