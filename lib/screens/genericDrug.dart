@@ -1,4 +1,5 @@
 import 'package:drohealthtest/components/drugCard.dart';
+import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
 import 'package:drohealthtest/components/drugScreen/productDetail.dart';
 import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dart';
@@ -147,7 +148,7 @@ class DrugScreen extends StatelessWidget {
                         color: Colors.white, fontWeight: FontWeight.bold))
               ],
             ),
-            
+            onTap: () => showAddToCartModal(context),
           )
         ],
       ),
