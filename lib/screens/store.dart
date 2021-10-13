@@ -4,12 +4,15 @@ import 'package:drohealthtest/components/customFAB.dart';
 import 'package:drohealthtest/components/drugCard.dart';
 import 'package:drohealthtest/components/input/searchTextField.dart';
 import 'package:drohealthtest/components/mediumIcon.dart';
+import 'package:drohealthtest/components/topBar.dart';
 import 'package:drohealthtest/models/categoryCardModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'categories.dart';
 
 class StoreScreen extends StatefulWidget {
   const StoreScreen({Key? key}) : super(key: key);
@@ -34,35 +37,26 @@ class _StoreScreenState extends State<StoreScreen> {
         color: DroColors.lightGrey,
         child: Column(
           children: [
-            Container(
-              height: size.height * .2,
-              width: size.width * 3,
-              decoration: BoxDecoration(
-                  gradient: DroColors.purpleGradient,
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(24))),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * .07),
-                child: Column(
-                  children: [
-                    Spacer(),
-                    Row(
-                      children: [
-                        Text('Pharmacy',
-                            style: TextStyle(
-                                fontSize: size.height * .027,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        Spacer(),
-                        MediumIcon('heart.svg'),
-                        MediumIcon('delivery.svg'),
-                      ],
-                    ),
-                    SizedBox(height: size.height * .02),
-                    SearchTextField(),
-                    SizedBox(height: size.height * .035),
-                  ],
-                ),
+            TopBar(
+              child: Column(
+                children: [
+                  SizedBox(height: size.height * .07),
+                  Row(
+                    children: [
+                      Text('Pharmacy',
+                          style: TextStyle(
+                              fontSize: size.height * .027,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                      Spacer(),
+                      MediumIcon('heart.svg'),
+                      MediumIcon('delivery.svg')
+                    ],
+                  ),
+                  SizedBox(height: size.height * .02),
+                  SearchTextField(),
+                  SizedBox(height: size.height * .035),
+                ],
               ),
             ),
             Expanded(
@@ -131,7 +125,11 @@ class _StoreScreenState extends State<StoreScreen> {
                                             color: DroColors.purple,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CategoriesScreen())),
                                     ),
                                   ],
                                 ),

@@ -1,3 +1,4 @@
+import 'package:drohealthtest/screens/genericDrug.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,10 @@ class DrugCard extends StatelessWidget {
           color: Colors.white,
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DrugScreen()));
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,8 +35,8 @@ class DrugCard extends StatelessWidget {
                   child: Container(
                     height: size.height * .18,
                     child: Image.asset(
-                      'assets/infant.jpg',
-                      fit: BoxFit.cover,
+                      'assets/medicine1.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

@@ -18,6 +18,10 @@ class CustomFab extends StatelessWidget {
             width: size.width * .3,
             decoration: BoxDecoration(
                 gradient: DroColors.redGradient,
+                boxShadow: [
+                  BoxShadow(color: Colors.red, spreadRadius: 2, blurRadius: 14)
+                ],
+                border: Border.all(color: Colors.white, width: 2),
                 borderRadius: BorderRadius.circular(1000)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
