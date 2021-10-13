@@ -16,11 +16,12 @@ class ProductDetailContainer extends StatelessWidget {
     SizeReference size = SizeReference(context);
     return Container(
       height: size.height * .06,
+      width: size.width * .4,
       child: Row(
         children: [
           SizedBox(
-            width: size.width * .12,
-            height: size.height * .04,
+            width: size.width * .11,
+            height: size.height * .036,
             child: SvgPicture.asset(
               'assets/$icon',
               color: DroColors.purple,
@@ -34,13 +35,14 @@ class ProductDetailContainer extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: DroColors.middleBlue.withOpacity(.7),
+                  fontSize: size.width * .025,
                 ),
               ),
               Text(
                 subtitle,
                 style: TextStyle(
                     color: DroColors.middleBlue,
-                    fontSize: size.width * .04,
+                    fontSize: size.width * .036,
                     fontWeight: FontWeight.bold),
               ),
             ],
