@@ -5,6 +5,7 @@ import 'package:drohealthtest/components/drugCard.dart';
 import 'package:drohealthtest/components/input/searchTextField.dart';
 import 'package:drohealthtest/components/mediumIcon.dart';
 import 'package:drohealthtest/components/topBar.dart';
+import 'package:drohealthtest/customMethods/unimplementedSnack.dart';
 import 'package:drohealthtest/models/categoryCardModel.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
@@ -124,7 +125,8 @@ class _StoreScreenState extends State<StoreScreen> {
                                             color: DroColors.purple,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () =>
+                                          () => displaySnack(context),
                                     ),
                                   ],
                                 ),
