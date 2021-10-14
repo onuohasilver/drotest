@@ -1,5 +1,5 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
-import 'package:drohealthtest/screens/cart/cartScreen.dart';
+import 'package:drohealthtest/screens/cartScreen.dart';
 import 'package:drohealthtest/screens/store.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';

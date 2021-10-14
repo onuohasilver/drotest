@@ -13,8 +13,6 @@ import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'categories.dart';
-
 class StoreScreen extends StatefulWidget {
   const StoreScreen({Key? key}) : super(key: key);
 
@@ -126,11 +124,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                             color: DroColors.purple,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      onPressed: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CategoriesScreen())),
+                                      onPressed: () {},
                                     ),
                                   ],
                                 ),
@@ -192,10 +186,10 @@ class _StoreScreenState extends State<StoreScreen> {
                                         gridDelegate:
                                             SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
-                                          mainAxisSpacing: 10,
+                                          mainAxisSpacing: 5,
                                           childAspectRatio: (size.width * .2) /
                                               (size.height * .15),
-                                          crossAxisSpacing: 10,
+                                          crossAxisSpacing: 5,
                                         ),
                                         itemCount: 6,
                                         itemBuilder:
