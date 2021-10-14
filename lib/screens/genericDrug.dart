@@ -6,7 +6,9 @@ import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dar
 import 'package:drohealthtest/components/drugScreen/sellerInformation.dart';
 import 'package:drohealthtest/components/purpleButton.dart';
 import 'package:drohealthtest/components/topBar.dart';
+import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
+import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 
@@ -124,7 +126,10 @@ class DrugScreen extends StatelessWidget {
                           return SizedBox(
                             width: size.width * .4,
                             height: size.height * .3,
-                            child: DrugCard(),
+                            child: DrugCard(
+                              drugModel:
+                                  DrugModel.fromJson(MockData.drugs[index]),
+                            ),
                           );
                         },
                       ),

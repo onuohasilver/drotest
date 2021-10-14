@@ -1,11 +1,11 @@
 part of 'cart_cubit.dart';
 
 class CartInitial extends CartState {
-  CartInitial(List<int> cartItems) : super(cartItems);
+  CartInitial(List<DrugModel> cartItems) : super(cartItems);
 }
 
 abstract class CartState extends Equatable {
-  final List<int> cartItems;
+  final List<DrugModel> cartItems;
   const CartState(this.cartItems);
 
   @override
@@ -13,11 +13,16 @@ abstract class CartState extends Equatable {
 }
 
 class ProductAdded extends CartState {
-  final List<int> cartItems;
+  final List<DrugModel> cartItems;
   ProductAdded(this.cartItems) : super(cartItems);
-  factory ProductAdded.copyWith({List<int>? cartItems}) {
-    return ProductAdded(cartItems!);
-  }
+
+  @override
+  List<Object> get props => [cartItems];
+}
+
+class ProductRemoved extends CartState {
+  final List<DrugModel> cartItems;
+  ProductRemoved(this.cartItems) : super(cartItems);
 
   @override
   List<Object> get props => [cartItems];

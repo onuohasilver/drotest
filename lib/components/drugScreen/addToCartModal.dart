@@ -1,4 +1,4 @@
-import 'package:drohealthtest/screens/cart/cartPage.dart';
+import 'package:drohealthtest/screens/cart/cartScreen.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ Future showAddToCartModal(BuildContext context) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CartPage(),
+                      builder: (context) => CartScreen(),
                     ),
                   );
                 },

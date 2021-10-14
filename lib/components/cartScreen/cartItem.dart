@@ -1,21 +1,15 @@
 import 'package:drohealthtest/cubit/cart_cubit.dart';
+import 'package:drohealthtest/customMethods/cartMethods/getNumberOfItems.dart';
+import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartItem extends StatefulWidget {
-  final int index;
-  const CartItem({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
+class CartItem extends StatelessWidget {
+  final DrugModel drugModel;
 
-  @override
-  _CartItemState createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
+  const CartItem({Key? key, required this.drugModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SizeReference size = SizeReference(context);
@@ -31,21 +25,21 @@ class _CartItemState extends State<CartItem> {
               children: [
                 SizedBox(
                   height: size.width * .2,
-                  child: Image.asset('assets/medicine1.png'),
+                  child: Image.asset(drugModel.imageUrl),
                 ),
                 SizedBox(width: size.width * .05),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Paracetamol',
+                    Text(drugModel.name,
                         style: TextStyle(fontSize: size.width * .04)),
                     SizedBox(height: size.height * .005),
-                    Text('Tablet •  500mg',
+                    Text(drugModel.type,
                         style: TextStyle(
                             fontSize: size.width * .04, color: Colors.grey)),
                     SizedBox(height: size.height * .005),
-                    Text('₦500',
+                    Text('₦${drugModel.price}',
                         style: TextStyle(
                             fontSize: size.width * .045,
                             fontWeight: FontWeight.bold)),
@@ -67,7 +61,7 @@ class _CartItemState extends State<CartItem> {
                           Spacer(
                             flex: 2,
                           ),
-                          Text('1'),
+                          Text('${getNumberInCart(context, drugModel.name)}'),
                           Icon(Icons.arrow_drop_down_rounded,
                               color: DroColors.purple),
                           Spacer(),
@@ -76,7 +70,7 @@ class _CartItemState extends State<CartItem> {
                     ),
                     TextButton.icon(
                         onPressed: () {
-                          context.read<CartCubit>().addToCart(widget.index);
+                          context.read<CartCubit>().removeFromCart(drugModel);
                         },
                         icon:
                             Icon(Icons.delete_outline, color: DroColors.purple),

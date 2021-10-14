@@ -6,6 +6,7 @@ import 'package:drohealthtest/components/input/searchTextField.dart';
 import 'package:drohealthtest/components/mediumIcon.dart';
 import 'package:drohealthtest/components/topBar.dart';
 import 'package:drohealthtest/models/categoryCardModel.dart';
+import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
@@ -199,7 +200,9 @@ class _StoreScreenState extends State<StoreScreen> {
                                         itemCount: 6,
                                         itemBuilder:
                                             (BuildContext context, int index) {
-                                          return DrugCard();
+                                          return DrugCard(
+                                              drugModel: DrugModel.fromJson(
+                                                  MockData.drugs[index]));
                                         },
                                       ),
                                     ),

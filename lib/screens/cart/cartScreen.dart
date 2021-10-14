@@ -2,6 +2,9 @@ import 'package:drohealthtest/components/cartScreen/cartItem.dart';
 import 'package:drohealthtest/components/cartScreen/cartTopBar.dart';
 import 'package:drohealthtest/components/topBar.dart';
 import 'package:drohealthtest/cubit/cart_cubit.dart';
+import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
+import 'package:drohealthtest/models/drugModel.dart';
+import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +17,7 @@ class CartScreen extends StatelessWidget {
     SizeReference size = SizeReference(context);
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
+        List<DrugModel> cartItem = state.cartItems;
         return Material(
           child: Container(
             color: Colors.white,
@@ -35,11 +39,15 @@ class CartScreen extends StatelessWidget {
                         itemCount: 3,
                         separatorBuilder: (context, index) => Divider(),
                         itemBuilder: (BuildContext context, int index) {
-                          return CartItem(index: index);
+                          return CartItem(
+                            drugModel:
+                                DrugModel.fromJson(MockData.drugs[index]),
+                          );
                         },
                       ),
                     ),
-                    Text(state.toString())
+                    Text(getTotalCartAmount(context).toString()),
+                    Text(cartItem.toString())
                   ],
                 )
               ],
