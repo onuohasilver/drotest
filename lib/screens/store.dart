@@ -22,8 +22,7 @@ class StoreScreen extends StatefulWidget {
 }
 
 class _StoreScreenState extends State<StoreScreen> {
-  final ScrollController scrollController =
-      ScrollController(initialScrollOffset: 200);
+  final ScrollController scrollController = ScrollController();
   bool switchFAB = false;
   @override
   Widget build(BuildContext context) {

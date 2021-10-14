@@ -23,7 +23,7 @@ class CustomFab extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: DroColors.redGradient,
           boxShadow: [
-            BoxShadow(color: Colors.red, spreadRadius: 2, blurRadius: 14)
+            BoxShadow(color: Colors.red, spreadRadius: 1, blurRadius: 5)
           ],
           border: Border.all(color: Colors.white, width: 2),
           borderRadius: BorderRadius.circular(1000)),

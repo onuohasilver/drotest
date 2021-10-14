@@ -48,13 +48,15 @@ class DrugCard extends StatelessWidget {
                 padding: EdgeInsets.only(left: size.width * .02),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: size.height * .01),
                     Text(drugModel.name,
-                        style: TextStyle(fontSize: size.width * .04)),
+                        style: TextStyle(fontSize: size.width * .037)),
                     SizedBox(height: size.height * .005),
                     Text(drugModel.type,
                         style: TextStyle(
-                            fontSize: size.width * .04, color: Colors.grey)),
+                            fontSize: size.width * .037, color: Colors.grey)),
                     SizedBox(height: size.height * .005),
                     Text('₦${drugModel.price}',
                         style: TextStyle(
