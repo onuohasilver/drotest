@@ -1,6 +1,7 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/components/cartScreen/cartItem.dart';
 import 'package:drohealthtest/components/cartScreen/cartTopBar.dart';
+import 'package:drohealthtest/components/purpleButton.dart';
 import 'package:drohealthtest/components/topBar.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getCartList.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
@@ -36,19 +37,57 @@ class CartScreen extends StatelessWidget {
                       child: ListView.separated(
                         physics: BouncingScrollPhysics(),
                         padding: EdgeInsets.zero,
-                        itemCount: getMappedCartList(context).length,
+                        itemCount: getMappedCartList(state).length,
                         separatorBuilder: (context, index) => Divider(),
                         itemBuilder: (BuildContext context, int index) {
                           return CartItem(
                             drugModel:
-                                getMappedCartList(context).keys.toList()[index],
+                                getMappedCartList(state).keys.toList()[index],
                           );
                         },
                       ),
                     ),
-                    Text(getTotalCartAmount(context).toString()),
-                    Text(cartItem.toString())
                   ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: size.height * .13,
+                    color: Colors.white,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * .07),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text.rich(TextSpan(
+                              text: 'Total:  ',
+                              children: [
+                                TextSpan(
+                                    text:
+                                        '₦${getTotalCartAmount(state).toString()}',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: size.width * .047))
+                              ],
+                              style: TextStyle(fontSize: size.width * .047))),
+                          SizedBox(
+                              width: size.width * .5,
+                              child: PurpleButton(
+                                  onTap: () {},
+                                  child: Center(
+                                    child: Text(
+                                      'CHECKOUT',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.width * .037,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )))
+                        ],
+                      ),
+                    ),
+                  ),
                 )
               ],
             ),

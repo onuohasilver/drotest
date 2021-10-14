@@ -14,23 +14,20 @@ class PurpleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeReference size = SizeReference(context);
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 10),
-        child: Container(
-          height: size.height * .055,
-          width: size.width * .8,
-          decoration: BoxDecoration(
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Container(
+        height: size.height * .055,
+        width: size.width * .8,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: DroColors.purpleGradient),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
               borderRadius: BorderRadius.circular(10),
-              gradient: DroColors.purpleGradient),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-                borderRadius: BorderRadius.circular(10),
-                onTap: onTap,
-                child: child),
-          ),
+              onTap: onTap,
+              child: child),
         ),
       ),
     );

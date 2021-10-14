@@ -1,4 +1,5 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
+import 'package:drohealthtest/bloc/drug_quantity_cubit/drugquantity_cubit.dart';
 import 'package:drohealthtest/components/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
@@ -147,21 +148,27 @@ class DrugScreen extends StatelessWidget {
               child: TopBar(child: GenericDrugTopBar())),
           BlocBuilder<CartCubit, CartState>(
             builder: (_, state) {
-              return PurpleButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.shopping_cart_outlined, color: Colors.white),
-                    SizedBox(width: size.width * .01),
-                    Text('Add to cart',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold))
-                  ],
+              return Align(
+                alignment: Alignment.bottomCenter,
+                child: PurpleButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.shopping_cart_outlined, color: Colors.white),
+                      SizedBox(width: size.width * .01),
+                      Text('Add to cart',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                  onTap: () {
+                    int quantity = _.read<CounterCubit>().state;
+                    for (int x = 1; x <= quantity; x++) {
+                      _.read<CartCubit>().addToCart(drugModel);
+                    }
+                    showAddToCartModal(context);
+                  },
                 ),
-                onTap: () => {
-                  _.read<CartCubit>().addToCart(drugModel),
-                  showAddToCartModal(context),
-                },
               );
             },
           )

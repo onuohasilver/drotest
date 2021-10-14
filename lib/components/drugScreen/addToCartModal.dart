@@ -1,5 +1,6 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/screens/cart/cartScreen.dart';
+import 'package:drohealthtest/screens/store.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,14 @@ Future showAddToCartModal(BuildContext context) {
                           shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => StoreScreen(),
+                          ),
+                        );
+                      },
                       child: Text(
                         'CONTINUE SHOPPING',
                         style: TextStyle(

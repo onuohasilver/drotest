@@ -43,7 +43,7 @@ class _QuantityAndPriceSelectorState extends State<QuantityAndPriceSelector> {
                         });
                         _.read<CounterCubit>().decrement();
                       }),
-                  Text('',
+                  Text('$quantity',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .053)),

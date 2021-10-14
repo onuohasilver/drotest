@@ -1,5 +1,4 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
-
 import 'package:drohealthtest/customMethods/cartMethods/getNumberOfItems.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
@@ -40,7 +39,8 @@ class CartItem extends StatelessWidget {
                         style: TextStyle(
                             fontSize: size.width * .04, color: Colors.grey)),
                     SizedBox(height: size.height * .005),
-                    Text('₦${drugModel.price}',
+                    Text(
+                        '₦${drugModel.price * getNumberInCart(state, drugModel.name)}',
                         style: TextStyle(
                             fontSize: size.width * .045,
                             fontWeight: FontWeight.bold)),
@@ -62,7 +62,7 @@ class CartItem extends StatelessWidget {
                           Spacer(
                             flex: 2,
                           ),
-                          Text('${getNumberInCart(context, drugModel.name)}'),
+                          Text('${getNumberInCart(state, drugModel.name)}'),
                           Icon(Icons.arrow_drop_down_rounded,
                               color: DroColors.purple),
                           Spacer(),

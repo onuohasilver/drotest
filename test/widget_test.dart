@@ -1,30 +1,57 @@
-// // This is a basic Flutter widget test.
-// //
-// // To perform an interaction with a widget in your test, use the WidgetTester
-// // utility that Flutter provides. For example, you can send tap and scroll
-// // gestures. You can also use WidgetTester to find child widgets in the widget
-// // tree, read text, and verify that the values of widget properties are correct.
+import 'package:bloc_test/bloc_test.dart';
+import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
+import 'package:drohealthtest/customMethods/cartMethods/getNumberOfItems.dart';
+import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
+import 'package:drohealthtest/models/drugModel.dart';
+import 'package:drohealthtest/utilities/mockdata.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
+main() {
+  group('DroHealth Tests', () {
+    late CartCubit cartCubit;
 
-// import 'package:drohealthtest/main.dart';
+    setUp(() {
+      EquatableConfig.stringify = true;
+      cartCubit = CartCubit();
+    });
 
-// void main() {
-//   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-//     // Build our app and trigger a frame.
-//     await tester.pumpWidget(MyApp());
+    blocTest<CartCubit, CartState>(
+      'emits ProductAdded when Drug is added.',
+      build: () => cartCubit,
+      act: (cubit) => cubit.addToCart(DrugModel.fromJson(MockData.drugs[0])),
+      expect: () => <CartState>[
+        ProductAdded([DrugModel.fromJson(MockData.drugs[0])])
+      ],
+    );
+    test('Test Custom Cart Methods', () {
+      ///Mock an addition to the cart
+      cartCubit.addToCart(DrugModel.fromJson(MockData.drugs[0]));
+      cartCubit.addToCart(DrugModel.fromJson(MockData.drugs[1]));
+      expect(
+          getNumberInCart(
+              cartCubit.state, DrugModel.fromJson(MockData.drugs[0]).name),
+          1);
+      expect(getTotalCartAmount(cartCubit.state), 1650);
+    });
 
-//     // Verify that our counter starts at 0.
-//     expect(find.text('0'), findsOneWidget);
-//     expect(find.text('1'), findsNothing);
+    // blocTest<CartCubit, CartState>(
+    //   'emits ProductRemoved when Drug is removed.',
+    //   build: () => cartCubit,
+    //   act: (cubit) =>
+    //       cubit.removeFromCart(DrugModel.fromJson(MockData.drugs[0])),
+    //   expect: () => <CartState>[ProductRemoved([])],
+    // );
 
-//     // Tap the '+' icon anda trigger a frame.
-//     await tester.tap(find.byIcon(Icons.add));
-//     await tester.pump();
+    // test('Test Counter', () {
+    //   expect(
+    //       getNumberInCart(
+    //           cartCubit.state, DrugModel.fromJson(MockData.drugs[0]).name),
+    //       1);
+    // });
 
-//     // Verify that our counter has incremented.
-//     expect(find.text('0'), findsNothing);
-//     expect(find.text('1'), findsOneWidget);
-//   });
-// }
+    tearDown(() {
+      cartCubit.close();
+    });
+  });
+}
