@@ -134,7 +134,7 @@ class _StoreScreenState extends State<StoreScreen> {
                         ),
                         SliverToBoxAdapter(
                           child: SizedBox(
-                            height: size.height * .13,
+                            height: size.height * .1,
                             child: ListView.builder(
                               padding: EdgeInsets.only(left: size.width * .07),
                               scrollDirection: Axis.horizontal,
@@ -186,10 +186,10 @@ class _StoreScreenState extends State<StoreScreen> {
                                         gridDelegate:
                                             SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
-                                          mainAxisSpacing: 5,
+                                          mainAxisSpacing: 3,
                                           childAspectRatio: (size.width * .2) /
                                               (size.height * .15),
-                                          crossAxisSpacing: 5,
+                                          crossAxisSpacing: 3,
                                         ),
                                         itemCount: 6,
                                         itemBuilder:

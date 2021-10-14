@@ -14,62 +14,76 @@ class CustomFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeReference size = SizeReference(context);
-    return switchFAB
-        ? Container()
-        : Container(
-            constraints: BoxConstraints.tight(Size(
-              size.width * .32,
-              size.height * .06,
-            )),
-            decoration: BoxDecoration(
-                gradient: DroColors.redGradient,
-                boxShadow: [
-                  BoxShadow(color: Colors.red, spreadRadius: 2, blurRadius: 14)
-                ],
-                border: Border.all(color: Colors.white, width: 2),
-                borderRadius: BorderRadius.circular(1000)),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(),
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      constraints: BoxConstraints.tight(Size(
+        switchFAB ? size.width * .13 : size.width * .32,
+        size.height * .06,
+      )),
+      decoration: BoxDecoration(
+          gradient: DroColors.redGradient,
+          boxShadow: [
+            BoxShadow(color: Colors.red, spreadRadius: 2, blurRadius: 14)
+          ],
+          border: Border.all(color: Colors.white, width: 2),
+          borderRadius: BorderRadius.circular(1000)),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartScreen(),
+            ),
+          ),
+          child: switchFAB
+              ? Container(
+                  child: Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.white,
+                ))
+              : Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Checkout',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.white,
+                        ),
+                        BlocBuilder<CartCubit, CartState>(
+                          builder: (context, state) {
+                            return Material(
+                              color: Colors.yellow,
+                              type: MaterialType.circle,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  context
+                                      .read<CartCubit>()
+                                      .items
+                                      .length
+                                      .toString(),
+                                  style: TextStyle(
+                                      // color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Checkout',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.white,
-                    ),
-                    BlocBuilder<CartCubit, CartState>(
-                      builder: (context, state) {
-                        return Material(
-                          color: Colors.yellow,
-                          type: MaterialType.circle,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              context.read<CartCubit>().items.length.toString(),
-                              style: TextStyle(
-                                  // color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
+        ),
+      ),
+    );
   }
 }

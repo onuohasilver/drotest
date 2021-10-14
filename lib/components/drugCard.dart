@@ -14,7 +14,7 @@ class DrugCard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeReference size = SizeReference(context);
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(6.0),
       child: Material(
         clipBehavior: Clip.none,
         borderRadius: BorderRadius.circular(10),
