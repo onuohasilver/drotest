@@ -25,7 +25,9 @@ class DrugCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => DrugScreen()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DrugScreen(drugModel: drugModel)));
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,3 +1,4 @@
+import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/components/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
@@ -11,9 +12,11 @@ import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DrugScreen extends StatelessWidget {
-  const DrugScreen({Key? key}) : super(key: key);
+  final DrugModel drugModel;
+  const DrugScreen({Key? key, required this.drugModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +34,14 @@ class DrugScreen extends StatelessWidget {
                   SizedBox(
                     height: size.height * .2,
                     width: size.width * .7,
-                    child: Image.asset('assets/medicine1.png'),
+                    child: Image.asset(drugModel.imageUrl),
                   ),
                   SizedBox(height: size.height * .01),
-                  Text('Paracetamol',
+                  Text(drugModel.name,
                       style: TextStyle(
                           fontSize: size.width * .055,
                           fontWeight: FontWeight.bold)),
-                  Text('Tablet •  500mg',
+                  Text(drugModel.type,
                       style: TextStyle(
                           fontSize: size.width * .04, color: Colors.grey)),
                   SizedBox(height: size.height * .01),
@@ -48,7 +51,7 @@ class DrugScreen extends StatelessWidget {
                       children: [
                         SellerInformation(),
                         SizedBox(height: size.height * .02),
-                        QuantityAndPriceSelector(),
+                        QuantityAndPriceSelector(amount: drugModel.price),
                         SizedBox(height: size.height * .02),
                         Align(
                           alignment: Alignment.centerLeft,
@@ -142,18 +145,25 @@ class DrugScreen extends StatelessWidget {
           SizedBox(
               height: size.height * .15,
               child: TopBar(child: GenericDrugTopBar())),
-          PurpleButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.shopping_cart_outlined, color: Colors.white),
-                SizedBox(width: size.width * .01),
-                Text('Add to cart',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold))
-              ],
-            ),
-            onTap: () => showAddToCartModal(context),
+          BlocBuilder<CartCubit, CartState>(
+            builder: (_, state) {
+              return PurpleButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.shopping_cart_outlined, color: Colors.white),
+                    SizedBox(width: size.width * .01),
+                    Text('Add to cart',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold))
+                  ],
+                ),
+                onTap: () => {
+                  _.read<CartCubit>().addToCart(drugModel),
+                  showAddToCartModal(context),
+                },
+              );
+            },
           )
         ],
       ),

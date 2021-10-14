@@ -1,7 +1,7 @@
+import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/components/cartScreen/cartItem.dart';
 import 'package:drohealthtest/components/cartScreen/cartTopBar.dart';
 import 'package:drohealthtest/components/topBar.dart';
-import 'package:drohealthtest/cubit/cart_cubit.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getCartList.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
 import 'package:drohealthtest/models/drugModel.dart';

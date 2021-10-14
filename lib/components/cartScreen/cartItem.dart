@@ -1,4 +1,5 @@
-import 'package:drohealthtest/cubit/cart_cubit.dart';
+import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
+
 import 'package:drohealthtest/customMethods/cartMethods/getNumberOfItems.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
