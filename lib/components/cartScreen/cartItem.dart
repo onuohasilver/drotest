@@ -1,18 +1,25 @@
-import 'package:drohealthtest/logic/cartBloc/cart_cubit.dart';
+import 'package:drohealthtest/cubit/cart_cubit.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends StatefulWidget {
+  final int index;
   const CartItem({
     Key? key,
+    required this.index,
   }) : super(key: key);
 
   @override
+  _CartItemState createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  @override
   Widget build(BuildContext context) {
     SizeReference size = SizeReference(context);
-    return BlocBuilder<CartCubit, List>(
+    return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         return Container(
           height: size.height * .11,
@@ -69,7 +76,7 @@ class CartItem extends StatelessWidget {
                     ),
                     TextButton.icon(
                         onPressed: () {
-                          context.read<CartCubit>().remove('data2');
+                          context.read<CartCubit>().addToCart(widget.index);
                         },
                         icon:
                             Icon(Icons.delete_outline, color: DroColors.purple),
