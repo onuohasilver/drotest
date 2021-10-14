@@ -13,11 +13,11 @@ counterTest() {
   });
 
   test('Quantity Cubit Counter', () {
-    expect(counterCubit.state, 0);
-    counterCubit.increment();
     expect(counterCubit.state, 1);
+    counterCubit.increment();
+    expect(counterCubit.state, 2);
     counterCubit.decrement();
-    expect(counterCubit.state, 0);
+    expect(counterCubit.state, 1);
   });
   tearDown(() {
     counterCubit.close();

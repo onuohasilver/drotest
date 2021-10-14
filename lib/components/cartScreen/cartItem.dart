@@ -6,6 +6,8 @@ import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'dropDown.dart';
+
 class CartItem extends StatelessWidget {
   final DrugModel drugModel;
 
@@ -62,9 +64,7 @@ class CartItem extends StatelessWidget {
                           Spacer(
                             flex: 2,
                           ),
-                          Text('${getNumberInCart(state, drugModel.name)}'),
-                          Icon(Icons.arrow_drop_down_rounded,
-                              color: DroColors.purple),
+                          DropDown(drugModel: drugModel),
                           Spacer(),
                         ],
                       ),
