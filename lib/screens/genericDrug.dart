@@ -1,13 +1,13 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/bloc/drug_quantity_cubit/drugquantity_cubit.dart';
-import 'package:drohealthtest/components/drugCard.dart';
+import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
 import 'package:drohealthtest/components/drugScreen/productDetail.dart';
 import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dart';
 import 'package:drohealthtest/components/drugScreen/sellerInformation.dart';
-import 'package:drohealthtest/components/purpleButton.dart';
-import 'package:drohealthtest/components/topBar.dart';
+import 'package:drohealthtest/components/input/purpleButton.dart';
+import 'package:drohealthtest/components/generic/topBar.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';

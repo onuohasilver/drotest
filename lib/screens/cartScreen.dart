@@ -1,8 +1,8 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/components/cartScreen/cartItem.dart';
 import 'package:drohealthtest/components/cartScreen/cartTopBar.dart';
-import 'package:drohealthtest/components/purpleButton.dart';
-import 'package:drohealthtest/components/topBar.dart';
+import 'package:drohealthtest/components/input/purpleButton.dart';
+import 'package:drohealthtest/components/generic/topBar.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getCartList.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
@@ -22,15 +22,19 @@ class CartScreen extends StatelessWidget {
             color: Colors.white,
             height: size.height,
             width: size.width,
-            child: state.cartItems.isEmpty
-                ? Center(child: Text('Cart is Empty'))
-                : Stack(
-                    children: [
-                      SizedBox(
-                        height: size.height * .15,
-                        child: TopBar(child: CartTopBar()),
-                      ),
-                      Column(
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: size.height * .15,
+                  child: TopBar(child: CartTopBar()),
+                ),
+                state.cartItems.isEmpty
+                    ? Center(
+                        child: Text(
+                        'Cart is Empty',
+                        style: TextStyle(fontSize: size.width * .05),
+                      ))
+                    : Column(
                         children: [
                           SizedBox(height: size.height * .18),
                           Expanded(
@@ -50,7 +54,9 @@ class CartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Align(
+                state.cartItems.isEmpty
+                    ? SizedBox()
+                    : Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           height: size.height * .13,
@@ -91,8 +97,8 @@ class CartScreen extends StatelessWidget {
                           ),
                         ),
                       )
-                    ],
-                  ),
+              ],
+            ),
           ),
         );
       },

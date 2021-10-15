@@ -1,10 +1,11 @@
-import 'package:drohealthtest/components/bottombar.dart';
-import 'package:drohealthtest/components/categoryCard.dart';
-import 'package:drohealthtest/components/customFAB.dart';
-import 'package:drohealthtest/components/drugCard.dart';
+import 'package:drohealthtest/components/generic/bottombar.dart';
+import 'package:drohealthtest/components/cartScreen/categoryCard.dart';
+
+import 'package:drohealthtest/components/storeScreen/customFAB.dart';
+import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/input/searchTextField.dart';
-import 'package:drohealthtest/components/mediumIcon.dart';
-import 'package:drohealthtest/components/topBar.dart';
+import 'package:drohealthtest/components/generic/mediumIcon.dart';
+import 'package:drohealthtest/components/generic/topBar.dart';
 import 'package:drohealthtest/customMethods/unimplementedSnack.dart';
 import 'package:drohealthtest/models/categoryCardModel.dart';
 import 'package:drohealthtest/models/drugModel.dart';

@@ -1,4 +1,4 @@
-import 'package:drohealthtest/components/mediumIcon.dart';
+import 'package:drohealthtest/components/generic/mediumIcon.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

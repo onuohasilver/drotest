@@ -20,11 +20,14 @@ class _DropDownState extends State<DropDown> {
         return DropdownButton(
           value: getNumberInCart(state, widget.drugModel.name),
           onChanged: (int? value) {
+            ///Reemove all Previous occurences of the drug in the cart
             for (int x = 1;
                 x <= getNumberInCart(state, widget.drugModel.name);
                 x++) {
               _.read<CartCubit>().removeFromCart(widget.drugModel);
             }
+
+            ///add new instance of the drug based on the selected quantity
             for (int x = 1; x <= value!; x++) {
               _.read<CartCubit>().addToCart(widget.drugModel);
             }

@@ -5,9 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class MediumIcon extends StatelessWidget {
   final String iconUrl;
+  final bool isActive;
   const MediumIcon(
     this.iconUrl, {
     Key? key,
+    this.isActive = false,
   }) : super(key: key);
 
   @override
@@ -26,15 +28,16 @@ class MediumIcon extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child:
                       SvgPicture.asset('assets/$iconUrl', color: Colors.white)),
-              Align(
-                alignment: Alignment.topRight,
-                child: SizedBox(
-                  height: 10,
-                  width: 10,
-                  child:
-                      Material(color: Colors.amber, type: MaterialType.circle),
-                ),
-              )
+              if (isActive)
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SizedBox(
+                    height: 10,
+                    width: 10,
+                    child: Material(
+                        color: Colors.amber, type: MaterialType.circle),
+                  ),
+                )
             ],
           ),
         ),

@@ -26,7 +26,7 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: size.width * .2,
+                  height: size.width * .3,
                   child: Image.asset(drugModel.imageUrl),
                 ),
                 SizedBox(width: size.width * .05),

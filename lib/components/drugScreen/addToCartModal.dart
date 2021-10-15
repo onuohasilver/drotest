@@ -6,7 +6,7 @@ import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../purpleButton.dart';
+import '../input/purpleButton.dart';
 
 Future showAddToCartModal(BuildContext context) {
   SizeReference size = SizeReference(context);

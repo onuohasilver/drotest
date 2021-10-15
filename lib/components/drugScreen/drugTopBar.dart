@@ -1,7 +1,7 @@
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 
-import '../mediumIcon.dart';
+import '../generic/mediumIcon.dart';
 
 class GenericDrugTopBar extends StatelessWidget {
   const GenericDrugTopBar({
