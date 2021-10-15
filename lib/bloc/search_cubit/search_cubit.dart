@@ -11,9 +11,13 @@ class SearchCubit extends Cubit<SearchState> {
     emit(SearchInitial([]));
   }
 
+  ///Retrieves a list of drugs based on the parsed search criteria
+
   void makeSearch(List<Map> allDrugs, String searchItem) {
     List<DrugModel> allDrugsModel = List.generate(
         allDrugs.length, (index) => DrugModel.fromJson(allDrugs[index]));
+
+    ///An empty search should return a Search initial state
     if (searchItem != '') {
       emit(SearchSuccess([
         ...allDrugsModel

@@ -1,3 +1,4 @@
+import 'package:drohealthtest/customMethods/unimplementedSnack.dart';
 import 'package:drohealthtest/models/categoryCardModel.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,9 @@ class CategoryCard extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      displaySnack(context);
+                    },
                     child: Center(
                       child: Text(
                         cardModel.title,

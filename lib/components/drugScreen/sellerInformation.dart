@@ -1,3 +1,4 @@
+import 'package:drohealthtest/customMethods/unimplementedSnack.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +43,12 @@ class SellerInformation extends StatelessWidget {
         Material(
           color: DroColors.purple.withOpacity(.1),
           borderRadius: BorderRadius.circular(10),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Icon(Icons.favorite_outline, color: DroColors.purple),
+          child: GestureDetector(
+            onTap: () => displaySnack(context),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Icon(Icons.favorite_outline, color: DroColors.purple),
+            ),
           ),
         )
       ],

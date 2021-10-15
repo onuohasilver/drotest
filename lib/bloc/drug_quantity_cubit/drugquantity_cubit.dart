@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 
 class CounterCubit extends Cubit<int> {
-  /// {@macro counter_cubit}
+  ///
   CounterCubit() : super(1);
 
   /// Subtract 1 from the current state.
@@ -9,4 +9,7 @@ class CounterCubit extends Cubit<int> {
 
   /// Add 1 to the current state.
   void increment() => emit(state + 1);
+
+  ///resets the counter to 1
+  void reset() => emit(1);
 }

@@ -35,7 +35,7 @@ class _DropDownState extends State<DropDown> {
           items: List.generate(
               20,
               (index) => DropdownMenuItem(
-                  value: index, child: Text(index.toString()))),
+                  value: index + 1, child: Text('${index + 1}'))),
           icon: Icon(Icons.arrow_drop_down_rounded, color: DroColors.purple),
         );
       },

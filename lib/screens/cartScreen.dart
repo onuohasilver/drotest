@@ -1,8 +1,8 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/components/cartScreen/cartItem.dart';
 import 'package:drohealthtest/components/cartScreen/cartTopBar.dart';
-import 'package:drohealthtest/components/input/purpleButton.dart';
 import 'package:drohealthtest/components/generic/topBar.dart';
+import 'package:drohealthtest/components/input/purpleButton.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getCartList.dart';
 import 'package:drohealthtest/customMethods/cartMethods/getTotalCartAmount.dart';
 import 'package:drohealthtest/utilities/sizing.dart';

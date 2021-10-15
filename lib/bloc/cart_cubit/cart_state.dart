@@ -12,6 +12,7 @@ abstract class CartState extends Equatable {
   List<Object> get props => [cartItems];
 }
 
+///State emmited when a new product is added
 class ProductAdded extends CartState {
   final List<DrugModel> cartItems;
   ProductAdded(this.cartItems) : super(cartItems);
@@ -20,6 +21,7 @@ class ProductAdded extends CartState {
   List<Object> get props => [cartItems];
 }
 
+///State emmited when a new product is removed from the cart
 class ProductRemoved extends CartState {
   final List<DrugModel> cartItems;
   ProductRemoved(this.cartItems) : super(cartItems);

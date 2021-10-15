@@ -23,7 +23,10 @@ class CustomFab extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: DroColors.redGradient,
           boxShadow: [
-            BoxShadow(color: Colors.red, spreadRadius: 1, blurRadius: 5)
+            BoxShadow(
+                color: Colors.red.withOpacity(.3),
+                spreadRadius: 1,
+                blurRadius: 5)
           ],
           border: Border.all(color: Colors.white, width: 2),
           borderRadius: BorderRadius.circular(1000)),
@@ -51,11 +54,14 @@ class CustomFab extends StatelessWidget {
                         Text(
                           'Checkout',
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontSize: size.width * .03,
+                          ),
                         ),
                         Icon(
                           Icons.shopping_cart_outlined,
                           color: Colors.white,
+                          size: size.width * .04,
                         ),
                         BlocBuilder<CartCubit, CartState>(
                           builder: (context, state) {
@@ -63,7 +69,7 @@ class CustomFab extends StatelessWidget {
                               color: Colors.yellow,
                               type: MaterialType.circle,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(4.0),
                                 child: Text(
                                   context
                                       .read<CartCubit>()
@@ -71,8 +77,8 @@ class CustomFab extends StatelessWidget {
                                       .length
                                       .toString(),
                                   style: TextStyle(
-                                      // color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: size.width * .03,
+                                  ),
                                 ),
                               ),
                             );

@@ -3,7 +3,7 @@ import 'package:drohealthtest/bloc/drug_quantity_cubit/drugquantity_cubit.dart';
 import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
 import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
-import 'package:drohealthtest/components/drugScreen/productDetail.dart';
+import 'package:drohealthtest/components/drugScreen/productDetails.dart';
 import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dart';
 import 'package:drohealthtest/components/drugScreen/sellerInformation.dart';
 import 'package:drohealthtest/components/generic/topBar.dart';
@@ -28,7 +28,7 @@ class DrugScreen extends StatelessWidget {
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Container(
-              height: size.height * 1.15,
+              height: size.height * 1.25,
               child: Column(
                 children: [
                   SizedBox(height: size.height * .17),
@@ -64,44 +64,8 @@ class DrugScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: size.height * .01),
-                        Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ProductDetailContainer(
-                                  icon: 'drug.svg',
-                                  subtitle: '8 x 12 tablets (96)',
-                                  title: 'PACK SIZE',
-                                ),
-                                ProductDetailContainer(
-                                  icon: 'qr.svg',
-                                  subtitle: 'PRO23232311',
-                                  title: 'PRODUCT ID',
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: size.height * .01),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ProductDetailContainer(
-                                  icon: 'drugsingle.svg',
-                                  subtitle: 'Paracetamol',
-                                  title: 'CONSTITUENTS',
-                                ),
-                                ProductDetailContainer(
-                                  icon: 'pack.svg',
-                                  subtitle: 'Packs',
-                                  title: 'DISPENSED IN',
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * .02,
-                        ),
+                        ProductDetails(),
+                        SizedBox(height: size.height * .02),
                         Text(
                             '1 pack of Emzor Paracetamol (500mg) contains 8 units of 12 tablets',
                             style: TextStyle(
@@ -167,6 +131,7 @@ class DrugScreen extends StatelessWidget {
                     for (int x = 1; x <= quantity; x++) {
                       _.read<CartCubit>().addToCart(drugModel);
                     }
+                    _.read<CounterCubit>().reset();
                     showAddToCartModal(context);
                   },
                 ),

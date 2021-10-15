@@ -1,3 +1,4 @@
+import 'package:drohealthtest/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
 ///Creates a simple snackbr
@@ -12,6 +13,7 @@ void displaySnack(
               child: Text(
                 'This is an unimplemented feature',
                 textAlign: TextAlign.center,
+                style: TextStyle(color: DroColors.purple),
               ),
             ),
           ));

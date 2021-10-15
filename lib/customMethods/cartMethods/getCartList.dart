@@ -1,6 +1,7 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 
+/// Returns a map of all the items added to the cart with their corresponding quantities
 Map getMappedCartList(CartState state) {
   Map<DrugModel, int> cartMap = {};
   state.cartItems.forEach((element) {

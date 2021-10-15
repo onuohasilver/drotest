@@ -1,17 +1,14 @@
 import 'package:drohealthtest/bloc/search_cubit/search_cubit.dart';
 import 'package:drohealthtest/bloc/search_cubit/search_state.dart';
-import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/generic/bottombar.dart';
-import 'package:drohealthtest/components/generic/mediumIcon.dart';
 import 'package:drohealthtest/components/generic/topBar.dart';
-import 'package:drohealthtest/components/input/searchTextField.dart';
-import 'package:drohealthtest/components/storeScreen/categoryCard.dart';
+import 'package:drohealthtest/components/storeScreen/categoryListView.dart';
 import 'package:drohealthtest/components/storeScreen/customFAB.dart';
+import 'package:drohealthtest/components/storeScreen/drugsGridView.dart';
+import 'package:drohealthtest/components/storeScreen/searchResult.dart';
+import 'package:drohealthtest/components/storeScreen/storeTopBar.dart';
 import 'package:drohealthtest/customMethods/unimplementedSnack.dart';
-import 'package:drohealthtest/models/categoryCardModel.dart';
-import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
-import 'package:drohealthtest/utilities/mockdata.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,59 +37,19 @@ class _StoreScreenState extends State<StoreScreen> {
         child: Column(
           children: [
             TopBar(
-              child: Column(
-                children: [
-                  SizedBox(height: size.height * .07),
-                  Row(
-                    children: [
-                      Text('Pharmacy',
-                          style: TextStyle(
-                              fontSize: size.height * .027,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                      Spacer(),
-                      MediumIcon('heart.svg', isActive: true),
-                      MediumIcon('delivery.svg')
-                    ],
-                  ),
-                  SizedBox(height: size.height * .02),
-                  SearchTextField(),
-                  SizedBox(height: size.height * .035),
-                ],
-              ),
+              child: StoreTopBar(),
             ),
             Expanded(
               child: BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
                   return state.searchResult.isNotEmpty
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.width * .07),
-                          child: GridView.builder(
-                            padding: EdgeInsets.only(bottom: 100),
-                            physics: NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 3,
-                              childAspectRatio:
-                                  (size.width * .2) / (size.height * .13),
-                              crossAxisSpacing: 3,
-                            ),
-                            itemCount: state.searchResult.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return DrugCard(
-                                  drugModel: state.searchResult[index]);
-                            },
-                          ),
-                        )
+                      ? SearchResultDisplay(state)
                       : Container(
                           color: Colors.white,
                           child: NotificationListener(
                             onNotification: (ScrollNotification scrollInfo) {
                               setState(() {
                                 if (scrollInfo.metrics.pixels > 0.0) {
-                                  // here you change the condition
                                   switchFAB = true;
                                 } else {
                                   switchFAB = false;
@@ -106,47 +63,42 @@ class _StoreScreenState extends State<StoreScreen> {
                                 controller: scrollController,
                                 slivers: [
                                   SliverToBoxAdapter(
-                                      child: Container(
-                                    color: DroColors.lightGrey,
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: size.width * .07,
-                                          vertical: size.height * .015),
-                                      child: Row(
-                                        children: [
-                                          SvgPicture.asset('assets/pin.svg'),
-                                          SizedBox(width: 10),
-                                          Text.rich(
-                                            TextSpan(
-                                                text: 'Delivery in ',
-                                                children: [
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          color: DroColors.lightGrey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: size.width * .07,
+                                                vertical: size.height * .015),
+                                            child: Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                    'assets/pin.svg'),
+                                                SizedBox(width: 10),
+                                                Text.rich(
                                                   TextSpan(
-                                                      text: 'Lagos, NG',
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold))
-                                                ]),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  )),
-                                  SliverToBoxAdapter(
-                                    child:
-                                        BlocBuilder<SearchCubit, SearchState>(
-                                      builder: (context, state) {
-                                        return Text('${state.searchResult}');
-                                      },
-                                    ),
-                                  ),
-                                  SliverToBoxAdapter(
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: size.width * .07),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(height: size.height * .01),
-                                          Row(
+                                                      text: 'Delivery in ',
+                                                      children: [
+                                                        TextSpan(
+                                                            text: 'Lagos, NG',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold))
+                                                      ]),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: size.height * .01),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: size.width * .07),
+                                          child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
@@ -169,93 +121,20 @@ class _StoreScreenState extends State<StoreScreen> {
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SliverToBoxAdapter(
-                                    child: SizedBox(
-                                      height: size.height * .1,
-                                      child: ListView.builder(
-                                        padding: EdgeInsets.only(
-                                            left: size.width * .07),
-                                        scrollDirection: Axis.horizontal,
-                                        physics: BouncingScrollPhysics(),
-                                        itemCount: 4,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          return CategoryCard(
-                                            cardModel:
-                                                CategoryCardModel.fromJson(
-                                                    MockData.categories[index]),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                  SliverToBoxAdapter(
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: size.width * .07),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(height: size.height * .02),
-                                          Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text('SUGGESTIONS',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold))
-                                              ]),
-                                          SizedBox(height: size.height * .01),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SliverToBoxAdapter(
-                                    child: Container(
-                                      height: size.height,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: size.width * .07),
-                                        child: Column(
-                                          children: [
-                                            Expanded(
-                                              child: SizedBox(
-                                                height: size.height,
-                                                child: GridView.builder(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 100),
-                                                  physics:
-                                                      NeverScrollableScrollPhysics(),
-                                                  gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 2,
-                                                    mainAxisSpacing: 3,
-                                                    childAspectRatio:
-                                                        (size.width * .2) /
-                                                            (size.height *
-                                                                .135),
-                                                    crossAxisSpacing: 3,
-                                                  ),
-                                                  itemCount: 6,
-                                                  itemBuilder:
-                                                      (BuildContext context,
-                                                          int index) {
-                                                    return DrugCard(
-                                                        drugModel: DrugModel
-                                                            .fromJson(MockData
-                                                                .drugs[index]));
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          ],
                                         ),
-                                      ),
+                                        CategoryListView(),
+                                        SizedBox(height: size.height * .02),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: size.width * .07),
+                                          child: Text('SUGGESTIONS',
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
+                                        SizedBox(height: size.height * .01),
+                                        DrugsGridView(),
+                                      ],
                                     ),
                                   )
                                 ]),
