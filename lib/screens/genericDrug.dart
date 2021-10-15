@@ -8,6 +8,7 @@ import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dar
 import 'package:drohealthtest/components/drugScreen/sellerInformation.dart';
 import 'package:drohealthtest/components/generic/topBar.dart';
 import 'package:drohealthtest/components/input/purpleButton.dart';
+import 'package:drohealthtest/customMethods/cartMethods/getNumberOfItems.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';
@@ -128,10 +129,13 @@ class DrugScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     int quantity = _.read<CounterCubit>().state;
-                    for (int x = 1; x <= quantity; x++) {
-                      _.read<CartCubit>().addToCart(drugModel);
+                    if (getNumberInCart(state, drugModel.name) < 20) {
+                      for (int x = 1; x <= quantity; x++) {
+                        _.read<CartCubit>().addToCart(drugModel);
+                      }
+                      _.read<CounterCubit>().reset();
                     }
-                    _.read<CounterCubit>().reset();
+
                     showAddToCartModal(context);
                   },
                 ),

@@ -18,7 +18,7 @@ class _DropDownState extends State<DropDown> {
     return BlocBuilder<CartCubit, CartState>(
       builder: (_, state) {
         return DropdownButton(
-          value: getNumberInCart(state, widget.drugModel.name),
+          value: getNumberInCart(state, widget.drugModel.name).clamp(1, 20),
           onChanged: (int? value) {
             ///Reemove all Previous occurences of the drug in the cart
             for (int x = 1;

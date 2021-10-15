@@ -41,13 +41,11 @@ class CartScreen extends StatelessWidget {
                             child: ListView.separated(
                               physics: BouncingScrollPhysics(),
                               padding: EdgeInsets.zero,
-                              itemCount: getMappedCartList(state).length,
+                              itemCount: state.cartItems.toSet().length,
                               separatorBuilder: (context, index) => Divider(),
                               itemBuilder: (BuildContext context, int index) {
                                 return CartItem(
-                                  drugModel: getMappedCartList(state)
-                                      .keys
-                                      .toList()[index],
+                                  drugModel: getMappedCartList(state)[index],
                                 );
                               },
                             ),

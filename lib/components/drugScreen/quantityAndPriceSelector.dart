@@ -38,10 +38,12 @@ class _QuantityAndPriceSelectorState extends State<QuantityAndPriceSelector> {
                   IconButton(
                       icon: Icon(Icons.remove, size: size.width * .046),
                       onPressed: () {
-                        setState(() {
-                          if (quantity > 1) quantity -= 1;
-                        });
-                        _.read<CounterCubit>().decrement();
+                        if (quantity > 1) {
+                          setState(() {
+                            quantity -= 1;
+                          });
+                          _.read<CounterCubit>().decrement();
+                        }
                       }),
                   Text('$quantity',
                       style: TextStyle(
@@ -50,10 +52,12 @@ class _QuantityAndPriceSelectorState extends State<QuantityAndPriceSelector> {
                   IconButton(
                     icon: Icon(Icons.add, size: size.width * .046),
                     onPressed: () {
-                      _.read<CounterCubit>().increment();
-                      setState(() {
-                        quantity += 1;
-                      });
+                      if (quantity < 20) {
+                        _.read<CounterCubit>().increment();
+                        setState(() {
+                          quantity += 1;
+                        });
+                      }
                     },
                   )
                 ],
