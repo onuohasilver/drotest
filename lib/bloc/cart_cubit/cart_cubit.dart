@@ -9,12 +9,14 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial([]));
   List<DrugModel> get items => _cartItems;
 
-  addToCart(DrugModel item) {
+  ///Adds a new item to the drug cart
+  void addToCart(DrugModel item) {
     _cartItems.add(item);
     emit(ProductAdded([...state.cartItems, item]));
   }
 
-  removeFromCart(DrugModel item) {
+  ///Removes an item from the cart
+  void removeFromCart(DrugModel item) {
     _cartItems.remove(item);
 
     emit(ProductRemoved([...state.cartItems]..remove(item)));

@@ -1,3 +1,4 @@
+import 'package:drohealthtest/bloc/search_cubit/search_cubit.dart';
 import 'package:drohealthtest/screens/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => CartCubit()),
-        BlocProvider(create: (_) => CounterCubit())
+        BlocProvider(create: (_) => CounterCubit()),
+        BlocProvider(create: (_) => SearchCubit())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

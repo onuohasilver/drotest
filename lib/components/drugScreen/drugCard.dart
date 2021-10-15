@@ -35,11 +35,16 @@ class DrugCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
                 child: Container(
-                  height: size.height * .18,
+                  height: size.height * .16,
                   color: DroColors.lightGrey,
-                  child: Image.asset(
-                    drugModel.imageUrl,
-                    fit: BoxFit.contain,
+                  child: Center(
+                    child: SizedBox(
+                      height: size.height * .125,
+                      child: Image.asset(
+                        drugModel.imageUrl,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
                 ),
               ),

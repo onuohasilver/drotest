@@ -1,5 +1,7 @@
+import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/utilities/sizing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../generic/mediumIcon.dart';
 
@@ -25,7 +27,12 @@ class GenericDrugTopBar extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.bold))),
             Spacer(),
-            MediumIcon('cart.svg')
+            BlocBuilder<CartCubit, CartState>(
+              builder: (context, state) {
+                return MediumIcon('cart.svg',
+                    isActive: state.cartItems.isNotEmpty);
+              },
+            )
           ],
         ),
         SizedBox(height: size.height * .02),

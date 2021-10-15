@@ -1,13 +1,13 @@
 import 'package:drohealthtest/bloc/cart_cubit/cart_cubit.dart';
 import 'package:drohealthtest/bloc/drug_quantity_cubit/drugquantity_cubit.dart';
-import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/addToCartModal.dart';
+import 'package:drohealthtest/components/drugScreen/drugCard.dart';
 import 'package:drohealthtest/components/drugScreen/drugTopBar.dart';
 import 'package:drohealthtest/components/drugScreen/productDetail.dart';
 import 'package:drohealthtest/components/drugScreen/quantityAndPriceSelector.dart';
 import 'package:drohealthtest/components/drugScreen/sellerInformation.dart';
-import 'package:drohealthtest/components/input/purpleButton.dart';
 import 'package:drohealthtest/components/generic/topBar.dart';
+import 'package:drohealthtest/components/input/purpleButton.dart';
 import 'package:drohealthtest/models/drugModel.dart';
 import 'package:drohealthtest/utilities/colors.dart';
 import 'package:drohealthtest/utilities/mockdata.dart';
@@ -28,7 +28,7 @@ class DrugScreen extends StatelessWidget {
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Container(
-              height: size.height * 1.25,
+              height: size.height * 1.15,
               child: Column(
                 children: [
                   SizedBox(height: size.height * .17),
@@ -106,7 +106,8 @@ class DrugScreen extends StatelessWidget {
                             '1 pack of Emzor Paracetamol (500mg) contains 8 units of 12 tablets',
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: size.width * .042)),
+                                height: 1.5,
+                                fontSize: size.width * .035)),
                         SizedBox(height: size.height * .02),
                         Align(
                           alignment: Alignment.centerLeft,
@@ -124,7 +125,7 @@ class DrugScreen extends StatelessWidget {
                       child: ListView.builder(
                         padding: EdgeInsets.only(left: size.width * .07),
                         physics: BouncingScrollPhysics(),
-                        itemCount: 8,
+                        itemCount: 5,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return SizedBox(

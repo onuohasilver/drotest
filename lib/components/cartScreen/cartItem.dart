@@ -19,15 +19,20 @@ class CartItem extends StatelessWidget {
       builder: (context, state) {
         return Container(
           height: size.height * .11,
-          width: size.width,
+          // width: size.width,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * .04),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: size.width * .3,
-                  child: Image.asset(drugModel.imageUrl),
+                  width: size.width * .2,
+                  child: Center(
+                    child: Image.asset(
+                      drugModel.imageUrl,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 SizedBox(width: size.width * .05),
                 Column(

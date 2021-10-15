@@ -10,69 +10,39 @@ class MockData {
   static List<Map> drugs = [
     {
       'Price': 1000,
-      'Name': 'Paracetamol',
+      'Name': 'Realflex',
       'Type': 'Tablet •  500mg',
       'ImageUrl': 'assets/medicine1.png',
     },
     {
       'Price': 650,
-      'Name': 'Emzolyn',
-      'Type': 'Syrup •  500mg',
+      'Name': 'Ecoslim',
+      'Type': 'Capsule •  500mg',
       'ImageUrl': 'assets/medicine2.jpeg',
     },
     {
       'Price': 500,
-      'Name': 'Vitamin C',
-      'Type': 'Capsule •  500mg',
+      'Name': 'Actifed',
+      'Type': 'Syrup •  230mg',
       'ImageUrl': 'assets/medicine3.jpeg',
     },
     {
       'Price': 100,
-      'Name': 'Ciproflaxicin',
-      'Type': 'Tablet •  500mg',
+      'Name': 'Pregnacare',
+      'Type': 'Tablet •  300mg',
       'ImageUrl': 'assets/medicine4.jpeg',
     },
     {
       'Price': 350,
-      'Name': 'Sudrex',
+      'Name': 'EMLA Cream',
       'Type': 'Tablet •  200mg',
       'ImageUrl': 'assets/medicine5.jpeg',
     },
     {
       'Price': 800,
-      'Name': 'Lomotil',
+      'Name': 'Efferc',
       'Type': 'Caplet •  50mg',
       'ImageUrl': 'assets/medicine6.jpeg',
     },
-    {
-      'Price': 150,
-      'Name': 'Panadol',
-      'Type': 'Tablet •  500mg',
-      'ImageUrl': 'assets/medicine1.png',
-    },
-    {
-      'Price': 100,
-      'Name': 'Ciprotab',
-      'Type': 'Tablet •  300mg',
-      'ImageUrl': 'assets/medicine1.png',
-    },
-    {
-      'Price': 100,
-      'Name': 'Flygyl',
-      'Type': 'Tablet •  500mg',
-      'ImageUrl': 'assets/medicine1.png',
-    },
-    {
-      'Price': 2000,
-      'Name': 'Feed Fine',
-      'Type': 'Tablet •  100mg',
-      'ImageUrl': 'assets/medicine1.png',
-    },
-    {
-      'Price': 1050,
-      'Name': 'Moduretic',
-      'Type': 'Tablet •  100mg',
-      'ImageUrl': 'assets/medicine1.png',
-    }
   ];
 }
